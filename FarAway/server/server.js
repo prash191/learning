@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const taskRoutes = require('./routes/taskRoutes');
 const cors = require('cors');
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5174', 'http://localhost:5173'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5174', 'http://localhost:5173', 'https://learning-ten-gold.vercel.app'];
 
 const app = express();
 const port = process.env.PORT || 3000;
