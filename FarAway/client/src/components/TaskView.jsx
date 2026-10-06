@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -20,8 +19,8 @@ const TaskView = ({ tasks, handleDeleteTask, handleUpdate }) => {
                 </div>
             ) : (
                 <ul className="packing-list">
-                    {tasks.map((task, idx) => (
-                        <li className={`packing-item${task.packed ? " is-packed" : ""}`} key={JSON.stringify(task)}>
+                    {tasks.map((task) => (
+                        <li className={`packing-item${task.packed ? " is-packed" : ""}`} key={task._id}>
                             <label className="packing-item-main">
                                 <input onChange={() => { handleUpdate(task) }} type="checkbox" checked={task.packed === true} />
                                 <span className="quantity-badge">{task.quantity}</span>
