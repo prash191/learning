@@ -124,7 +124,7 @@ const App = () => {
     <div className="app-shell">
       <Navbar />
       <Form cnt={cnt} item={item} setItem={setItem} setCnt={setCnt} handleFormSubmit={handleFormSubmit}/>
-      {isPending && <p role="status">Loading tasks...</p>}
+      {isPending && <p role="status" className="flex w-full items-center"><CircularProgress aria-label="Loading…" /></p>}
       {(error || mutationError) && <p role="alert">{(error || mutationError).message}</p>}
       <TaskView tasks={tasks} handleDeleteTask={handleDeleteTask} handleUpdate={handleUpdate}/>
       <Stats tasks={tasks}/>
