@@ -5,6 +5,7 @@ import TaskView from "./components/TaskView";
 import Stats from "./components/Stats";
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { createTask, deleteTask, getTasks, updateTask } from './api.js'
+import CircularProgress from "@mui/material/CircularProgress";
 
 const TASKS_QUERY_KEY = ['tasks'];
 
