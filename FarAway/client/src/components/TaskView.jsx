@@ -1,7 +1,8 @@
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Skeleton from '@mui/material/Skeleton';
 
-const TaskView = ({ tasks, handleDeleteTask, handleUpdate }) => {
+const TaskView = ({ tasks, isLoading, handleDeleteTask, handleUpdate }) => {
     return (
         <main className="list-section">
             <div className="list-heading">
@@ -11,7 +12,18 @@ const TaskView = ({ tasks, handleDeleteTask, handleUpdate }) => {
                 </div>
                 <span className="item-count">{tasks.length} {tasks.length === 1 ? "item" : "items"}</span>
             </div>
-            {tasks.length === 0 ? (
+            {isLoading ? (
+                <ul className="packing-list" aria-label="Loading packing list" aria-busy="true">
+                    {Array.from({ length: 4 }, (_, index) => (
+                        <li className="packing-item packing-item-skeleton" key={`task-skeleton-${index}`}>
+                            <Skeleton variant="circular" width={17} height={17} />
+                            <Skeleton variant="circular" width={28} height={28} />
+                            <Skeleton className="skeleton-task-name" variant="text" height={24} />
+                            <Skeleton variant="circular" width={32} height={32} />
+                        </li>
+                    ))}
+                </ul>
+            ) : tasks.length === 0 ? (
                 <div className="empty-state">
                     <span className="empty-icon" aria-hidden="true">✳</span>
                     <p>Your list is ready to take shape.</p>

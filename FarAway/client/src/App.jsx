@@ -5,7 +5,6 @@ import TaskView from "./components/TaskView";
 import Stats from "./components/Stats";
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { createTask, deleteTask, getTasks, updateTask } from './api.js'
-import CircularProgress from "@mui/material/CircularProgress";
 
 const TASKS_QUERY_KEY = ['tasks'];
 
@@ -125,9 +124,8 @@ const App = () => {
     <div className="app-shell">
       <Navbar />
       <Form cnt={cnt} item={item} setItem={setItem} setCnt={setCnt} handleFormSubmit={handleFormSubmit}/>
-      {isPending && <p role="status" className="flex w-full items-center"><CircularProgress aria-label="Loading…" /></p>}
       {(error || mutationError) && <p role="alert">{(error || mutationError).message}</p>}
-      <TaskView tasks={tasks} handleDeleteTask={handleDeleteTask} handleUpdate={handleUpdate}/>
+      <TaskView tasks={tasks} isLoading={isPending} handleDeleteTask={handleDeleteTask} handleUpdate={handleUpdate}/>
       <Stats tasks={tasks}/>
     </div>
   )
